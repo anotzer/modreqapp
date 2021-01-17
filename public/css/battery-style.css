@@ -1,0 +1,73 @@
+@media screen and (max-width: 1030px) {
+    /* .titlebat {position: relative; left: 132px;} 
+    .titlebat2 {position: relative; left: 121px;} 
+    .titlebat3 {position: relative; left: 26px;} 
+    #battery {position: relative; left: 135px;} 
+    #battery-level-pipe{position: relative; left: 160px;} */
+} 
+#battery {
+    margin-top: 10px;
+    height: 200px;
+    width: 90px;
+    border: 1px solid #c0c0c0;
+    border-radius: 6px;
+    padding: 10px;
+    transform: rotate(180deg);
+}
+
+#battery-level-pipe {
+    margin-top: 10px;
+    content: "";
+    display: block;
+    width: 37px;
+    height: 12px;
+    background: #fff;
+    position: relative;
+    right: -63px;
+    top: -11px;
+    border: 1px solid #c0c0c0;
+    border-bottom-color: #fff;
+    border-radius: 6px 6px 0 0;
+}
+
+#battery-level {
+    /* height: 20%; */
+    /* transform: rotate(180deg); */
+    width: 100%;
+    background: #3b67e9;
+    background: -moz-linear-gradient(top, #eb0871 0%, #440dda 50%, #440dda 51%, #7db9e8 100%);
+    background: -webkit-linear-gradient(top, #eb0871 0%, #440dda 50%, #440dda 51%, #7db9e8 100%);
+    /* background: -moz-linear-gradient(top, #3b67e9 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%);
+    background: -webkit-linear-gradient(top, #3b67e9 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%); */
+    border-radius: 2px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3b67e9', endColorstr='#7db9e8', GradientType=0);
+
+    transition: all ease-in-out 1s;    
+}
+
+#battery-level-digit {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    text-align: center;
+    font-size: 50px;
+    line-height: 92px;
+}
+
+#battery-level.battery-animation {
+    animation-name: battery-charget;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes battery-charget {
+    
+    /* 0% {
+        height: 20%;
+    } */
+    /* 100% {
+        height: 100%;
+    } */
+}
