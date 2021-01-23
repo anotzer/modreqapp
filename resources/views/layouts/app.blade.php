@@ -20,11 +20,26 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/css/battery-style.css')}}" />
-    <link rel="stylesheet" href="{{asset('/css/bar.css')}}" />
+    <link rel="stylesheet" href="{{asset('/css/month-style.css')}}" />
+    <!-- <link rel="stylesheet" href="{{asset('/css/bar.css')}}" /> -->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}">
+
+    <!-- page css -->
+
+    <!-- Core css -->
+    <link href="assets/css/app.min.css" rel="stylesheet">
+    <script>
+        var MyApp = {
+            csrfToken: "{{ csrf_token() }}"
+        }
+    </script>
 </head>
 <body>
     <div id="app">
         <div class="float-left">
+        @include('layouts.header-app')
         @include('layouts.leftbar')
         </div>
         
@@ -32,5 +47,15 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Core Vendors JS -->
+    <script src="{{asset('assets/js/vendors.min.js')}}"></script>
+
+    <!-- page js -->
+    <script src="{{asset('assets/vendors/chartjs/Chart.min.js')}}"></script>
+    <script src="{{asset('assets/js/pages/dashboard-default.js')}}"></script>
+
+    <!-- Core JS -->
+    <script src="{{asset('assets/js/app.min.js')}}"></script>
 </body>
 </html>

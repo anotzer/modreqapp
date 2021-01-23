@@ -1,28 +1,33 @@
 @extends('layouts.app')
 @section('content')
-<link rel="stylesheet" href="{{asset('/css/bar.css')}}"/>
-<div id="desc">Настройки</div>
-    <div class="desc__container">
-        <div class="row">
-           <div class="col-md-12">
+<settings-component csrf="{{csrf_token()}}">
+</settings-component>
+<!-- <div id="">Настройки</div>
+    <div class="page-container">
+        <div class="main-content">
+            <div class="row">
+            <div class="col-md-12 col-lg-12">
                 <div class="card">
-                   <div class="card-body">
-                        <div class="panel" style="padding-left: 180px;">
-                                <div class="col-md-12 row text-center" style="margin-left: 10px;">
+                    <div class="card-body">
+                        <div class="panel" style="">
+                            <form class="row form-control col-md-8" action="/monthsend" method="post">
+                                <div class="row">
                                     <label for="minChargeCurrent">Minimal Charge Current</label>
-                                    <div class="col-md-3">
-                                        <input id="minChargeCurrent" type="text" style="border: 1px solid black">
+                                    <div class="col-md-2">
+                                        <input id="minChargeCurrent" class="form-control" type="text" style="border: 1px solid black">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="submit" class="btn btn-default" value="Download" style="border: 1px solid black; padding: 2px;">
+                                        <input type="submit" class="btn btn-primary" value="Download" >
                                     </div>
                                 </div>                           
-                            <br>
-                            <form action="/monthsend" method="post">
+                                <br>
+                            </form>    
+
+                            <form class="row form-control" action="/monthsend" method="post">
                                 @csrf
                                 <div class="col-md-12 row" style="margin-left: 10px;">
-                                    <input type="text" name="Month" value="Feb" hidden>
-                                    <label for="minChargeCurrent" class="col-md-1">Feb</label>
+                                    <input type="text" name="Month" value="Jan" hidden>
+                                    <label for="minChargeCurrent" class="col-md-1">Jan</label>
                                     <div class="col-md-3">
                                         <input name="Hi" id="minChargeCurrent" type="text" style="border: 1px solid black">
                                     </div>
@@ -192,8 +197,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>                
         </div>
     </div>
-</div>
+</div> -->
 @endsection

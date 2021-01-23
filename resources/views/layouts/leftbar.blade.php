@@ -1,45 +1,30 @@
-<link rel="stylesheet" href="{{asset('/css/bar.css')}}" />
-<div class="header">
-    <div id="title">
-        Название
-    </div>
-    <div class="control">
-
-
-    @guest
-        @if (Route::has('login'))
-            <li class="nav-item">
-                <a class="nav-link btn_t" id="btn-control" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-        @endif
-    @else
-        <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }}
-            </a>
-            <a href="/settings" class="btn_t" id="btn-control">
-            
-                <div class="btn__content">
-                    Настройка
-                </div> 
-            </a>
-            <a href="/home" class="btn_t" id="btn-control">
-                <div class="btn__content">
-                    Главная
-                </div>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+<!-- Side Nav START -->
+<div class="side-nav">
+    <div class="side-nav-inner">
+        <ul class="side-nav-menu scrollable">
+            <li class="nav-item dropdown open">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <!-- <span class="icon-holder">
+                        <i class="anticon anticon-dashboard"></i>
+                    </span> -->
+                    <span class="title">Меню</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
                 </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </div>
-        </li>
-    @endguest
+                <ul class="dropdown-menu">
+                    <li class="{{\URL::current() == route('home') ? 'active' : ''}}">
+                        <a href="{{route('home')}}">Главная</a>
+                    </li>
+                    @auth
+                        @if(\App\Models\User::checkAdm())
+                        <li class="{{\URL::current() == route('settings') ? 'active' : ''}}">
+                            <a href="{{route('settings')}}">Настройки</a>
+                        </li>
+                        @endif
+                    @endif
+                </ul>
+            </li>
+        </ul>
     </div>
 </div>

@@ -40,4 +40,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected function checkAdm() {
+        if (\Auth::user()->role == 'admin' ) return true;
+        return false;
+    }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<home-component>
-</home-component>
+<default-component>
+</default-component>
     <!-- <div class="container">
         <div class="card">
             <div class="card-header text-center">

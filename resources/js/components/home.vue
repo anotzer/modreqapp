@@ -1,39 +1,37 @@
 <template>
     <div>
     <div id="desc">Мониторинг</div>
-        <div class="desc__container">
-            <div class="row">
+        <div class="container">
+            <div class="row ">
                 <!-- start code main battery -->
 
-                <div class="col-md-5" style="padding-bottom: 50px;">
-                    <div class="card">
-                        <div class="">
-                            <a class="titlebat" style="margin-left: 30px;"> SOC </a>
+                <div class="col-md-4" style="margin-left: 20px;">
+                    <div class="row battery_info" style="border: 1px solid gray; border-radius: 5%; padding: 5px 0 0 3px;">
+                        <div class="col-md-6 row">
+                            <div class="">
+                                <div v-if="items.status !== null" > Status: {{items.status}}</div>
+                                <div v-if="items.SOC !== null" > SOC: {{items.SOC}}</div>
+                                <div v-if="items.Current_current !== null" > Текущий ток: {{items.Current_current ? items.Current_current : 'Null'}}</div>
+                            </div>
+                            
+                            
                         </div>
-                        <br>
-                        <div class="">
-                            <div class="col-md-12 d-flex justify-content-center" >
+                        <div class="col-md-6 justify-content-right">
+                            <div class="col-md-12" >
                                 <div id="battery-level-pipe"></div>
                                 <div id="battery">
                                     <div id="battery-level" class="battery-animation" :style="{height: items.SOC + '%',}"></div>
                                     <div id="battery-level-digit"></div>
                                 </div>
                             </div>    
-                            <br>                        
-                            <div :style="{text: center}" v-if="items.SOC !== null" style="margin-left: 37px;">{{items.SOC}}</div>
-                            <div v-else >Undefined</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-sm-6 titlebat2" style="padding-bottom: 50px;">
-                    <div class="card">
-                        <div class="card-header">
-                            <a v-on:click="counts++"> Current </a>
-                        </div>
-                        <div class="card-body">
-                            <div v-if="items.Current !== null">{{items.Current}}</div>
-                            <div v-else >Undefined</div>
+                    <div class="">
+                        <div class="">
+                            <img :src="'images/generator.jpg'" width="200px" alt="">
                         </div>
                     </div>
                 </div>
@@ -58,13 +56,14 @@
         data: function () {
             return {
                 counts: 0,
-                items: null,
+                items: '',
                 info: null,
                 interval: null
             }
         },
         created() {
-            this.interval = setInterval(this.get_columns, 200)
+            this.interval = setInterval(this.get_columns, 20000),
+            console.log('dasdas '+__dirname)
         },
         beforeDestroy () {
             clearInterval(this.interval)

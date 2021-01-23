@@ -41,16 +41,21 @@ class PageController extends Controller
         return $name;
     }
 
+    public function chartData () {
+        $chartData = MainTable::get(['SOC', 'created_at']);
+        return $chartData;
+    }
+
     public function settings (Request $request) {
 
-        $input    = $request->all();
-        $settings = Settings::where('id', 1)->get();
+        // $input    = $request->all();
+        // $settings = Settings::where('id', 1)->get();
 
-        if ($settings[0] != null){
-            $settings[0]->update($input);
-        }
+        // if ($settings[0] != null){
+        //     $settings[0]->update($input);
+        // }
 
-        return view('settings', compact('settings'));
+        return view('settings');
     }
 
     public function get_curr_day_report () {
@@ -88,7 +93,7 @@ class PageController extends Controller
     public function month_send_Click (Request $request) {
         $Hi = intval($request['Hi']);
         $Lo = intval($request['Lo']);
-        dd($Hi, $Lo);
+        dd($Hi, $Lo, $request['Month']);
         $Month = $request['Month'];
         $host    = "127.0.0.1";
         $port    = 1111;

@@ -13,21 +13,23 @@ use App\Http\Controllers\PageController;
 |
 */
 
-//Route::get('/{any}', [PageController::class, 'index'])->where('any', '.*');
-Route::get('/home', [PageController::class, 'index'])->name('index');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [PageController::class, 'index'])->name('index');
+    Route::get('/column_name', [PageController::class, 'column_name'])->name('column_name');
+    Route::get('/settings', [PageController::class, 'settings'])->name('settings')->middleware('isAdmin');
+    Route::post('/monthsend', [PageController::class, 'month_send_Click'])->name('monthsend');
+    Route::post('/', [PageController::class, 'get_curr_day_report'])->name('curr_date');
+});
+
 Route::get('/info', [PageController::class, 'info'])->name('info');
-Route::get('/column_name', [PageController::class, 'column_name'])->name('column_name');
-
-Route::get('/settings', [PageController::class, 'settings'])->name('settings');
-Route::post('/monthsend', [PageController::class, 'month_send_Click'])->name('monthsend');
-Route::post('/', [PageController::class, 'get_curr_day_report'])->name('curr_date');
+Route::get('/chartData', [PageController::class, 'chartData']);
+Route::get('/', [PageController::class, 'index'])->name('home');
 
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('home');
+
 
 Auth::routes();

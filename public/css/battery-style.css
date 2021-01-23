@@ -6,25 +6,30 @@
     #battery-level-pipe{position: relative; left: 160px;} */
 } 
 #battery {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     height: 200px;
-    width: 90px;
+    width: 82px;
     border: 1px solid #c0c0c0;
     border-radius: 6px;
     padding: 10px;
     transform: rotate(180deg);
 }
+#battery-hr {
+    width: 10px;
+    border: 0px solid #c0c0c0;
+    transform: rotate(180deg);
+}
 
 #battery-level-pipe {
-    margin-top: 10px;
-    content: "";
-    display: block;
+    /* margin-top: 10px; */
+    /* content: ""; */
+    /* display: block; */
     width: 37px;
     height: 12px;
     background: #fff;
-    position: relative;
-    right: -63px;
-    top: -11px;
+    /* position: relative; */
+    right: -22px;
+    top: 1px;
     border: 1px solid #c0c0c0;
     border-bottom-color: #fff;
     border-radius: 6px 6px 0 0;
@@ -45,6 +50,34 @@
     transition: all ease-in-out 1s;    
 }
 
+#battery-level-hi {
+    position: absolute;
+    max-height: 172px;
+    width: 100px;
+    border-bottom: 2px solid green;
+    border-radius: 2px;
+    transition: all ease-in-out 1s;   
+}
+
+#battery-level-lo {
+    position: absolute;
+    max-height: 175px;
+    width: 100px;
+    border-bottom: 2px solid red;
+    border-radius: 2px;
+    transition: all ease-in-out 1s;    
+}
+
+.hr-line-h {
+    float:left;
+    z-index: 2000;
+}
+
+.hr-line-l {
+    float:left;
+    z-index: 25555;
+}
+
 #battery-level-digit {
     left: 0;
     top: 0;
@@ -60,6 +93,10 @@
     animation-name: battery-charget;
     animation-duration: 4s;
     animation-iteration-count: infinite;
+}
+
+.battery_info {
+    font-size: 18px;
 }
 
 @keyframes battery-charget {
